@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: learning_center_postgres
+    environment:
+      POSTGRES_DB: LearningCenterDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - learning_center_network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: learning_center_api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=LearningCenterDB;Username=postgres;Password=password
+    ports:
+      - "5000:8080"
+    depends_on:
+      - postgres
+    networks:
+      - learning_center_network
+    volumes:
+      - ./logs:/app/logs
+
+volumes:
+  postgres_data:
+
+networks:
+  learning_center_network:
+    driver: bridge
