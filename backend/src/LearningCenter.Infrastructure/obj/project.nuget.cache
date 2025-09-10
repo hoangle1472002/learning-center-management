@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mzit6BMeRoE=",
+  "dgSpecHash": "8n2KiV1Pmuw=",
   "success": true,
   "projectFilePath": "/Users/lehoang/Documents/DotNet/202509/backend/src/LearningCenter.Infrastructure/LearningCenter.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -22,13 +22,14 @@
     "/Users/lehoang/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.9/microsoft.extensions.logging.abstractions.9.0.9.nupkg.sha512",
     "/Users/lehoang/.nuget/packages/microsoft.extensions.options/9.0.9/microsoft.extensions.options.9.0.9.nupkg.sha512",
     "/Users/lehoang/.nuget/packages/microsoft.extensions.primitives/9.0.9/microsoft.extensions.primitives.9.0.9.nupkg.sha512",
-    "/Users/lehoang/.nuget/packages/microsoft.identitymodel.abstractions/8.0.1/microsoft.identitymodel.abstractions.8.0.1.nupkg.sha512",
-    "/Users/lehoang/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.0.1/microsoft.identitymodel.jsonwebtokens.8.0.1.nupkg.sha512",
-    "/Users/lehoang/.nuget/packages/microsoft.identitymodel.logging/8.0.1/microsoft.identitymodel.logging.8.0.1.nupkg.sha512",
-    "/Users/lehoang/.nuget/packages/microsoft.identitymodel.tokens/8.0.1/microsoft.identitymodel.tokens.8.0.1.nupkg.sha512",
+    "/Users/lehoang/.nuget/packages/microsoft.identitymodel.abstractions/8.14.0/microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
+    "/Users/lehoang/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.14.0/microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
+    "/Users/lehoang/.nuget/packages/microsoft.identitymodel.logging/8.14.0/microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
+    "/Users/lehoang/.nuget/packages/microsoft.identitymodel.tokens/8.14.0/microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
     "/Users/lehoang/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512",
     "/Users/lehoang/.nuget/packages/npgsql.entityframeworkcore.postgresql/9.0.4/npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
-    "/Users/lehoang/.nuget/packages/system.diagnostics.diagnosticsource/9.0.9/system.diagnostics.diagnosticsource.9.0.9.nupkg.sha512"
+    "/Users/lehoang/.nuget/packages/system.diagnostics.diagnosticsource/9.0.9/system.diagnostics.diagnosticsource.9.0.9.nupkg.sha512",
+    "/Users/lehoang/.nuget/packages/system.identitymodel.tokens.jwt/8.14.0/system.identitymodel.tokens.jwt.8.14.0.nupkg.sha512"
   ],
   "logs": []
 }

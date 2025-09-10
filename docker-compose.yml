@@ -47,6 +47,7 @@ services:
 volumes:
   postgres_data:
 
+
 networks:
   learning_center_network:
     driver: bridge

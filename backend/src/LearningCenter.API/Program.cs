@@ -69,7 +69,9 @@ builder.Services.AddMediatR(cfg => {
 });
 
 // Add AutoMapper
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(cfg => {
+    cfg.AddProfile<LearningCenter.Application.Mappings.MappingProfile>();
+});
 
 // Add JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -107,16 +109,6 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Learning Center API V1");
-        c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
-    });
-}
-
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
@@ -126,9 +118,12 @@ app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.MapControllers();
 
-// Ensure database is created
+// Ensure database is created (commented out for now to avoid connection issues)
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
