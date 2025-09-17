@@ -21,8 +21,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Subject> Subjects { get; set; }
     public DbSet<Class> Classes { get; set; }
     public DbSet<StudentClass> StudentClasses { get; set; }
-    public DbSet<ClassSchedule> ClassSchedules { get; set; }
-    public DbSet<TeacherSchedule> TeacherSchedules { get; set; }
+    public DbSet<Schedule> Schedules { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Exam> Exams { get; set; }
     public DbSet<ExamResult> ExamResults { get; set; }
@@ -121,7 +120,7 @@ public class ApplicationDbContext : DbContext
             entity.Property(e => e.StudentCode).HasMaxLength(20);
             entity.Property(e => e.ParentName).HasMaxLength(200);
             entity.Property(e => e.ParentPhone).HasMaxLength(20);
-            entity.Property(e => e.ParentEmail).HasMaxLength(500);
+            // entity.Property(e => e.ParentEmail).HasMaxLength(500); // Removed - not in Student entity
             entity.Property(e => e.Notes).HasMaxLength(500);
             
             entity.HasOne(e => e.User)
@@ -134,12 +133,12 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Teacher>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.HasIndex(e => e.EmployeeCode).IsUnique();
-            entity.Property(e => e.EmployeeCode).HasMaxLength(20);
+            // entity.HasIndex(e => e.EmployeeCode).IsUnique(); // Removed - not in Teacher entity
+            // entity.Property(e => e.EmployeeCode).HasMaxLength(20); // Removed - not in Teacher entity
             entity.Property(e => e.Specialization).HasMaxLength(200);
             entity.Property(e => e.Bio).HasMaxLength(1000);
-            entity.Property(e => e.Education).HasMaxLength(200);
-            entity.Property(e => e.Experience).HasMaxLength(200);
+            // entity.Property(e => e.Education).HasMaxLength(200); // Removed - not in Teacher entity
+            // entity.Property(e => e.Experience).HasMaxLength(200); // Removed - not in Teacher entity
             entity.Property(e => e.HourlyRate).HasColumnType("decimal(10,2)");
             
             entity.HasOne(e => e.User)
@@ -186,9 +185,9 @@ public class ApplicationDbContext : DbContext
         {
             entity.HasKey(e => e.Id);
             entity.HasIndex(e => new { e.StudentId, e.ClassId }).IsUnique();
-            entity.Property(e => e.Status).HasMaxLength(50);
-            entity.Property(e => e.PaidAmount).HasColumnType("decimal(10,2)");
-            entity.Property(e => e.RemainingAmount).HasColumnType("decimal(10,2)");
+            // entity.Property(e => e.Status).HasMaxLength(50); // Removed - not in StudentClass entity
+            // entity.Property(e => e.PaidAmount).HasColumnType("decimal(10,2)"); // Removed - not in StudentClass entity
+            // entity.Property(e => e.RemainingAmount).HasColumnType("decimal(10,2)"); // Removed - not in StudentClass entity
             
             entity.HasOne(e => e.Student)
                 .WithMany(s => s.StudentClasses)
@@ -214,15 +213,21 @@ public class ApplicationDbContext : DbContext
                 .OnDelete(DeleteBehavior.Cascade);
         });
 
-        // Configure TeacherSchedule entity
-        modelBuilder.Entity<TeacherSchedule>(entity =>
+        // Configure Schedule entity
+        modelBuilder.Entity<Schedule>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.Notes).HasMaxLength(200);
+            entity.Property(e => e.DayOfWeek).HasMaxLength(50);
+            entity.Property(e => e.Room).HasMaxLength(200);
             
             entity.HasOne(e => e.Teacher)
-                .WithMany(t => t.TeacherSchedules)
+                .WithMany(t => t.Schedules)
                 .HasForeignKey(e => e.TeacherId)
+                .OnDelete(DeleteBehavior.Cascade);
+                
+            entity.HasOne(e => e.Class)
+                .WithMany()
+                .HasForeignKey(e => e.ClassId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
 
@@ -237,7 +242,7 @@ public class ApplicationDbContext : DbContext
             entity.Property(e => e.Notes).HasMaxLength(500);
             
             entity.HasOne(e => e.Student)
-                .WithMany(s => s.Payments)
+                .WithMany()
                 .HasForeignKey(e => e.StudentId)
                 .OnDelete(DeleteBehavior.Restrict);
                 
@@ -277,7 +282,7 @@ public class ApplicationDbContext : DbContext
                 .OnDelete(DeleteBehavior.Cascade);
                 
             entity.HasOne(e => e.Student)
-                .WithMany(s => s.ExamResults)
+                .WithMany()
                 .HasForeignKey(e => e.StudentId)
                 .OnDelete(DeleteBehavior.Cascade);
         });

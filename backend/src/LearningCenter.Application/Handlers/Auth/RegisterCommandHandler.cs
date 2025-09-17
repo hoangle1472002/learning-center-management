@@ -6,6 +6,7 @@ using LearningCenter.Domain.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using UserEntity = LearningCenter.Domain.Entities.User;
+using StudentEntity = LearningCenter.Domain.Entities.Student;
 
 namespace LearningCenter.Application.Handlers.Auth;
 
@@ -69,7 +70,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, LoginResp
         }
 
         // Create Student profile
-        var student = new Student
+                var student = new StudentEntity
         {
             UserId = user.Id,
             StudentCode = GenerateStudentCode(),

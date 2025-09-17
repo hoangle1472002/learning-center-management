@@ -21,8 +21,10 @@ public class Class : BaseEntity
     public int TeacherId { get; set; }
     
     public int MaxStudents { get; set; } = 30;
+    public int MaxCapacity { get; set; } = 30; // Alias for MaxStudents
     
     public int CurrentStudents { get; set; } = 0;
+    public int CurrentEnrollment { get; set; } = 0; // Alias for CurrentStudents
     
     public DateTime? StartDate { get; set; }
     

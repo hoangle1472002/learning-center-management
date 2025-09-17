@@ -1,0 +1,20 @@
+namespace LearningCenter.Application.DTOs.Student;
+
+public class StudentListResponse
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string? PhoneNumber { get; set; }
+    public string? Address { get; set; }
+    public DateTime DateOfBirth { get; set; }
+    public string? ParentName { get; set; }
+    public string? ParentPhone { get; set; }
+    public string? Notes { get; set; }
+    public bool IsActive { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+    public string FullName => $"{FirstName} {LastName}";
+    public int Age => DateTime.Now.Year - DateOfBirth.Year;
+}

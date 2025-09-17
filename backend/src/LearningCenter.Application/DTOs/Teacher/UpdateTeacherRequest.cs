@@ -1,13 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace LearningCenter.Domain.Entities;
+namespace LearningCenter.Application.DTOs.Teacher;
 
-public class Teacher : BaseEntity
+public class UpdateTeacherRequest
 {
-    [Required]
-    public int UserId { get; set; }
-    public User User { get; set; } = null!;
-    
     [Required]
     [StringLength(100)]
     public string FirstName { get; set; } = string.Empty;
@@ -41,12 +37,4 @@ public class Teacher : BaseEntity
     public decimal HourlyRate { get; set; }
     
     public bool IsActive { get; set; } = true;
-    
-    // Navigation properties
-    public virtual ICollection<Class> Classes { get; set; } = new List<Class>();
-    public virtual ICollection<Schedule> Schedules { get; set; } = new List<Schedule>();
-    
-    // Computed properties
-    public string FullName => $"{FirstName} {LastName}";
-    public int Age => DateTime.Now.Year - DateOfBirth.Year;
 }

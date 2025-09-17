@@ -1,13 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace LearningCenter.Domain.Entities;
+namespace LearningCenter.Application.DTOs.Student;
 
-public class Student : BaseEntity
+public class CreateStudentRequest
 {
-    [Required]
-    public int UserId { get; set; }
-    public User User { get; set; } = null!;
-    
     [Required]
     [StringLength(100)]
     public string FirstName { get; set; } = string.Empty;
@@ -39,17 +35,7 @@ public class Student : BaseEntity
     [StringLength(500)]
     public string? Notes { get; set; }
     
-    [StringLength(20)]
-    public string? StudentCode { get; set; }
-    
-    public DateTime? EnrollmentDate { get; set; }
-    
-    public bool IsActive { get; set; } = true;
-    
-    // Navigation properties
-    public virtual ICollection<StudentClass> StudentClasses { get; set; } = new List<StudentClass>();
-    
-    // Computed properties
-    public string FullName => $"{FirstName} {LastName}";
-    public int Age => DateTime.Now.Year - DateOfBirth.Year;
+    [Required]
+    [MinLength(6)]
+    public string Password { get; set; } = string.Empty;
 }
