@@ -36,7 +36,17 @@ public class User : BaseEntity
     
     public bool IsEmailVerified { get; set; } = false;
     
+    public bool IsActive { get; set; } = true;
+    
     public DateTime? LastLoginAt { get; set; }
+    
+    // Password reset fields
+    public string? ResetPasswordToken { get; set; }
+    public DateTime? ResetPasswordExpiry { get; set; }
+    
+    // Refresh token fields
+    public string? RefreshToken { get; set; }
+    public DateTime? RefreshTokenExpiry { get; set; }
     
     // Navigation properties
     public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();

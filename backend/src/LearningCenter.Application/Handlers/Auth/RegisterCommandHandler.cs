@@ -5,6 +5,7 @@ using LearningCenter.Domain.Entities;
 using LearningCenter.Domain.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using UserEntity = LearningCenter.Domain.Entities.User;
 
 namespace LearningCenter.Application.Handlers.Auth;
 
@@ -37,7 +38,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, LoginResp
         }
 
         // Create new user
-        var user = new User
+        var user = new UserEntity
         {
             FirstName = request.FirstName,
             LastName = request.LastName,

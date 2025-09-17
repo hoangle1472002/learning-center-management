@@ -19,6 +19,7 @@ public static class DependencyInjection
 
         // Repositories
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         // Services
         services.AddScoped<IJwtService, JwtService>();
