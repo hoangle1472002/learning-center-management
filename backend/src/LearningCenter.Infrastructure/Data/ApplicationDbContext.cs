@@ -293,38 +293,6 @@ public class ApplicationDbContext : DbContext
 
     private void SeedData(ModelBuilder modelBuilder)
     {
-        // Seed Roles
-        modelBuilder.Entity<Role>().HasData(
-            new Role { Id = 1, Name = "Admin", Description = "System Administrator" },
-            new Role { Id = 2, Name = "Teacher", Description = "Teacher" },
-            new Role { Id = 3, Name = "Student", Description = "Student" }
-        );
-
-        // Seed Permissions
-        modelBuilder.Entity<Permission>().HasData(
-            new Permission { Id = 1, Name = "Users.Read", Description = "Read users", Resource = "Users", Action = "Read" },
-            new Permission { Id = 2, Name = "Users.Write", Description = "Write users", Resource = "Users", Action = "Write" },
-            new Permission { Id = 3, Name = "Classes.Read", Description = "Read classes", Resource = "Classes", Action = "Read" },
-            new Permission { Id = 4, Name = "Classes.Write", Description = "Write classes", Resource = "Classes", Action = "Write" },
-            new Permission { Id = 5, Name = "Students.Read", Description = "Read students", Resource = "Students", Action = "Read" },
-            new Permission { Id = 6, Name = "Students.Write", Description = "Write students", Resource = "Students", Action = "Write" }
-        );
-
-        // Seed RolePermissions
-        modelBuilder.Entity<RolePermission>().HasData(
-            // Admin has all permissions
-            new RolePermission { Id = 1, RoleId = 1, PermissionId = 1 },
-            new RolePermission { Id = 2, RoleId = 1, PermissionId = 2 },
-            new RolePermission { Id = 3, RoleId = 1, PermissionId = 3 },
-            new RolePermission { Id = 4, RoleId = 1, PermissionId = 4 },
-            new RolePermission { Id = 5, RoleId = 1, PermissionId = 5 },
-            new RolePermission { Id = 6, RoleId = 1, PermissionId = 6 },
-            // Teacher has read permissions
-            new RolePermission { Id = 7, RoleId = 2, PermissionId = 3 },
-            new RolePermission { Id = 8, RoleId = 2, PermissionId = 5 },
-            // Student has read permissions for their own data
-            new RolePermission { Id = 9, RoleId = 3, PermissionId = 3 },
-            new RolePermission { Id = 10, RoleId = 3, PermissionId = 5 }
-        );
+        // Seed data is handled in SeedData.cs
     }
 }

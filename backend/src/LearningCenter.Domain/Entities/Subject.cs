@@ -14,9 +14,19 @@ public class Subject : BaseEntity
     [MaxLength(20)]
     public string? Code { get; set; }
     
-    public int? Duration { get; set; } // in hours
+    [Required]
+    [Range(1, int.MaxValue)]
+    public int Duration { get; set; } // in hours
     
-    public decimal? Price { get; set; }
+    [Required]
+    [Range(0, double.MaxValue)]
+    public decimal Price { get; set; }
+    
+    [MaxLength(50)]
+    public string? Level { get; set; } // Beginner, Intermediate, Advanced
+    
+    [MaxLength(200)]
+    public string? Prerequisites { get; set; }
     
     public bool IsActive { get; set; } = true;
     

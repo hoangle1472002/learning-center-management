@@ -37,6 +37,12 @@ public class Class : BaseEntity
     [MaxLength(50)]
     public string? Status { get; set; } = "Draft"; // Draft, Active, Completed, Cancelled
     
+    [MaxLength(200)]
+    public string? Room { get; set; }
+    
+    [MaxLength(500)]
+    public string? Notes { get; set; }
+    
     // Navigation properties
     public virtual Subject Subject { get; set; } = null!;
     public virtual Teacher Teacher { get; set; } = null!;

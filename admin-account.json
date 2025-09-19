@@ -1,0 +1,11 @@
+{
+    "firstName": "Admin",
+    "lastName": "User",
+    "email": "admin@learningcenter.com",
+    "password": "Admin123!",
+    "confirmPassword": "Admin123!",
+    "phoneNumber": "+1234567890",
+    "address": "123 Admin Street, Admin City",
+    "dateOfBirth": "1990-01-01T00:00:00Z",
+    "gender": "Other"
+}

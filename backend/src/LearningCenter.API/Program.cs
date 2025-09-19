@@ -123,11 +123,14 @@ app.UseSwaggerUI();
 
 app.MapControllers();
 
-// Ensure database is created (commented out for now to avoid connection issues)
+// Ensure database is created and seed data
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     context.Database.EnsureCreated();
+    
+    // Seed data
+    await LearningCenter.Infrastructure.Data.SeedData.SeedAsync(scope.ServiceProvider);
 }
 
 app.Run();
