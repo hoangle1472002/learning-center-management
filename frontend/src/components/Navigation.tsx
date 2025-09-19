@@ -13,6 +13,7 @@ const Navigation: React.FC = () => {
         { path: '/subjects', label: 'Subjects', icon: '📚', roles: ['Admin', 'Teacher'] },
         { path: '/schedule', label: 'Schedule', icon: '📅', roles: ['Admin', 'Teacher', 'Student'] },
         { path: '/enrollment', label: 'Enrollment', icon: '👥', roles: ['Admin', 'Student'] },
+        { path: '/payments', label: 'Payments', icon: '💳', roles: ['Admin', 'Teacher'] },
     ].filter(item => hasRole('Admin') || item.roles.some(role => hasRole(role)));
 
     const handleLogout = () => {

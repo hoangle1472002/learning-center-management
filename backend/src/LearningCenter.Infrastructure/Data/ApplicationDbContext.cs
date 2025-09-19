@@ -23,8 +23,10 @@ public class ApplicationDbContext : DbContext
     public DbSet<StudentClass> StudentClasses { get; set; }
     public DbSet<Schedule> Schedules { get; set; }
     public DbSet<Payment> Payments { get; set; }
+    public DbSet<PaymentHistory> PaymentHistories { get; set; }
     public DbSet<Exam> Exams { get; set; }
     public DbSet<ExamResult> ExamResults { get; set; }
+    public DbSet<ExamAnswer> ExamAnswers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -258,7 +260,7 @@ public class ApplicationDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
             entity.Property(e => e.Description).HasMaxLength(1000);
-            entity.Property(e => e.Type).HasMaxLength(50);
+            entity.Property(e => e.ExamType).HasMaxLength(50);
             entity.Property(e => e.Status).HasMaxLength(50);
             
             entity.HasOne(e => e.Class)
