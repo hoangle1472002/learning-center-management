@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LearningCenter.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b17608308dabf653dc3d1d9fee2b2c98a45e9aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f5abebb004ed50013a0df258e389ddf56eed8815")]
 [assembly: System.Reflection.AssemblyProductAttribute("LearningCenter.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LearningCenter.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

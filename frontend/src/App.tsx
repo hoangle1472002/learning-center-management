@@ -11,6 +11,7 @@ import SubjectManagement from './pages/SubjectManagement';
 import ClassSchedule from './pages/ClassSchedule';
 import Enrollment from './pages/Enrollment';
 import PaymentManagement from './pages/PaymentManagement';
+import ExamManagement from './pages/ExamManagement';
 import Navigation from './components/Navigation';
 import { queryClient } from './lib/queryClient';
 
@@ -102,15 +103,23 @@ function App() {
                   </div>
                 </ProtectedRoute>
               } />
-              <Route path="/payments" element={
-                <ProtectedRoute requiredRoles={['Admin', 'Teacher']}>
-                  <div>
-                    <Navigation />
-                    <PaymentManagement />
-                  </div>
-                </ProtectedRoute>
-              } />
-              <Route path="*" element={<Navigate to="/login" replace />} />
+            <Route path="/payments" element={
+              <ProtectedRoute requiredRoles={['Admin', 'Teacher']}>
+                <div>
+                  <Navigation />
+                  <PaymentManagement />
+                </div>
+              </ProtectedRoute>
+            } />
+            <Route path="/exams" element={
+              <ProtectedRoute requiredRoles={['Admin', 'Teacher']}>
+                <div>
+                  <Navigation />
+                  <ExamManagement />
+                </div>
+              </ProtectedRoute>
+            } />
+            <Route path="*" element={<Navigate to="/login" replace />} />
             </Routes>
           </div>
         </Router>
